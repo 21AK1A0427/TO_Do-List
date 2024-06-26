@@ -5,12 +5,19 @@ function Todo({ index, todo, delTodo }) {
     alert('Thanks for completing the task!');
   };
 
+  const handleDelete = () => {
+    const confirmDelete = window.confirm('Have you completed this task? Press OK to delete.');
+    if (confirmDelete) {
+      delTodo(index);
+    }
+  };
+
   return (
     <div className="todo">
       <p>{todo}</p>
       <div className="action">
         <input type="checkbox" onChange={handleCheckboxChange} />
-        <button onClick={() => delTodo(index)}>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
